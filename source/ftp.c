@@ -2151,7 +2151,11 @@ ftp_loop(void)
   u32 down = hidKeysDown();
 
   if(down & KEY_B)
+  {
+    lcd_power = true;
+    apt_hook(APTHOOK_ONRESTORE, NULL);
     return LOOP_EXIT;
+  }
 
   /* check if the user wants to toggle the LCD power */
   if(down & KEY_START)
